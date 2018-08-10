@@ -1,0 +1,22 @@
+
+;; ----- smex-history -----
+(
+ customize-group
+ nodejs-repl-send-buffer
+ nodejs-repl
+ customize-apropos-groups
+ netrc-parse
+ 5x5
+ package-autoremove
+)
+
+;; ----- smex-data -----
+(
+ (customize-group . 3)
+ (package-autoremove . 2)
+ (5x5 . 1)
+ (customize-apropos-groups . 2)
+ (netrc-parse . 1)
+ (nodejs-repl . 3)
+ (nodejs-repl-send-buffer . 5)
+)

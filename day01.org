@@ -1,0 +1,134 @@
+#+STARTUP: indent
+* Keyboard shortcuts
+** 按键的定义
+M键-Option
+s键-Command
+S键-Shift
+C键-Control
+** 光标的移动
+C-a		行首
+C-b		上一个字符
+C-d             删除一个字符
+C-e		行尾
+C-f		下一个字符
+C-g		中断
+C-i             标题打开关闭类似tab
+C-k		删除到前尾
+C-l             定位当前行在屏幕的中间
+C-n		下一行
+C-o             在当前位置插入换行符
+C-p		上一行
+C-u 5 C-f       前进5个字符，重复执行命令的次数
+M-<             跳转到文本的开始
+M->             跳转到文本的末尾
+M-f             跳转到下一个单词
+M-a             跳转到句子的头部
+M-e             跳转到句子的尾部
+M-g g n         跳转到2n行
+M-delete        删除光标前的一个词
+M-k             删除光标到句尾间的字符
+M-{             跳转到段落的开头
+M-}             跳转到段落的结尾
+C-v             屏幕下翻一屏
+M-v             屏幕上翻一屏
+C-M+n           跳转到括号结束的位置
+C-M+p           跳转到括号开始的位置
+
+** 文件管理
+C-x C-f  查找文件
+C-x C-s 保存文件
+C-x C-c 关闭Emacs
+** 文件编辑
+   C-backspace  删除一个字符串
+** 查看帮助文件
+C-h k enter	按键是什么
+C-h v enter	变量是什么
+C-h f enter	函数是什么
+C-h m enter	查看当前开启的Minor  Mode
+** 初始化的临时配置
+M-x linum-mode 添加行号
+** 初始化的永久配置
+   (tool-bar-mode -1) 
+;;关闭工具栏。还好。
+   (scroll-bar-mode -1)
+;;关闭文件滑动控件
+   (global-linum-mode 1)
+;;显示行号
+   (setq-default cursar-type 'bar)
+;;更改光标的样式
+   (setq inhibit-splash-screen 1)
+;;关闭启动帮助画面
+   (set-face-attribute 'default nil :height 160)
+;;更改显示字体的大小
+   (global-company-mode 1)
+;;启用自动补全模块 Options-->Manage Emacs Packages找到Company并安装。
+(defun open-init-file()(interactive)(find-file "~/.emacs.d/init.el"))
+   (global-set-key (kbd "<f2>") 'open-init-file
+;;定义打开初始化文件的快捷键
+
+(electric-indent-mode 1)
+;;默认是打开的，用来实现回车以后自动缩进
+#+BEGIN_SRC emacs-lisp
+(delete-selection-mode t)
+#+END_SRC
+;;选中文件后输入可以直接替换，不会插入到后边
+
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-files nil)
+#+END_SRC
+;;删除备份文件
+#+BEGIN_SRC emacs-lisp
+(require 'org)
+(setq org-src-fontify-natively t)
+#+END_SRC
+;;设置org代码块的高亮
+#+BEGIN_SRC emacs-lisp
+(setq initial-frame-alist (quote ((fullscreen . maximized))))
+#+END_SRC
+;;设置页面开启以后是全屏
+** 页面分屏
+C-x-1 删除分屏
+C-x-3 在右边添加分屏
+C-x-2 在下边添加分屏
+* org-mode
+** 常用标记
+   <-s-tab 生成 #+BEGIN_SRC #+END_SRC
+   在代码块中使用C-c '可以在新的buffer中打开对应的文件编辑结束后s-s C-c '可以退回到原来的标记模式
+   <-e-tab 生成#+BEGIN_EXAMPLE #+END_EXAMPLE
+* recentf-mode
+M-x recentf-mode
+* Emacs Lisp
+;;2+2
+(+ 2 2)
+
+;;2+3*4
+(+ 2 (* 3 4))
+
+;;定义变量
+(setq name "zxp")
+(message name)
+
+;;定义函数
+(defun func()
+ (message "hello %s" name))
+
+;;调用函数
+(func)
+
+;;设置快捷键
+(global-set-key (kbd "<f1>") 'func)
+
+;;使函数可以直接被调用
+(defun func()
+  (interactive)
+    (message "hello %s" name))
+* packages manager
+M-x package-list-packages  和直接通过option点击是一样的。选中包输入 i 选中 输入u取消 C-s搜索 再次输入可以查看下一个搜索的字符，选中需要删除的包输入d 按X确认后就可以删除，输入大写的U可以更新更新的数据包。
+C-x b 可以打开最近的文件里边输入对应的名字直接打开最近的文件
+M-enter 可以改变乱序和自动添加标题
+package-autoremoce删除不用的包
+M-x customize-group 选择模块，然后通过界面修改模块的名字，生成的配置在custom-set-variable
+M-x info 进一步学习
+C-c C-t 生成todo标记
+C-c C-s 选择计划的开始时间
+C-c C-d 选择计划的结束时间

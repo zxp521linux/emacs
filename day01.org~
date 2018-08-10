@@ -1,0 +1,70 @@
+* Keyboard shortcuts
+** 按键的定义
+M键-Option
+s键-Command
+S键-Shift
+C键-Control
+** 光标的移动
+C-b		上一个字符
+C-f		下一个字符
+C-n		下一行
+C-p		上一行
+C-a		行首
+C-e		行尾
+C-g		中断
+C-k		删除当前行
+C-o             在当前位置换行
+** 文件管理
+C-x C-f  查找文件
+C-x C-s 保存文件
+C-x C-c 关闭Emacs
+** 查看帮助文件
+C-h k	按键是什么
+C-h v	变量是什么
+C-h f	函数是什么
+C-h m 	查看当前开启的Minor  Mode
+** 初始化的临时配置
+M-x linum-mode 添加行号
+** 初始化的永久配置
+   (tool-bar-mode -1) 
+;;关闭工具栏
+   (scroll-bar-mode -1)
+;;关闭文件滑动控件
+   (global-linum-mode 1)
+;;显示行号
+   (setq cursar-type 'bar)
+;;更改光标的样式
+   (setq inhibit-splash-screen 1)
+;;关闭启动帮助画面
+   (set-face-attribute 'default nil :height 160)
+;;更改显示字体的大小
+   (global-company-mode 1)
+;;启用自动补全模块 Options-->Manage Emacs Packages找到Company并安装。
+   (defun open-init-file()(interactive)(find-file "~/.emacs.d/init.el"))
+   (global-set-key (kbd "<f2>") 'open-init-file
+;;定义打开初始化文件的快捷键
+* Emacs Lisp
+;;2+2
+(+ 2 2)
+
+;;2+3*4
+(+ 2 (* 3 4))
+
+;;定义变量
+(setq name "zxp")
+(message name)
+
+;;定义函数
+(defun func()
+ (message "hello %s" name))
+
+;;调用函数
+(func)
+
+;;设置快捷键
+(global-set-key (kbd "<f1>") 'func)
+
+;;使函数可以直接被调用
+(defun func()
+  (interactive)
+    (message "hello %s" name))
