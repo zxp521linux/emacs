@@ -5,9 +5,9 @@
  nodejs-repl-send-buffer
  nodejs-repl
  customize-apropos-groups
- netrc-parse
  5x5
  package-autoremove
+ cd
 )
 
 ;; ----- smex-data -----

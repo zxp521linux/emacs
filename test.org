@@ -1,8 +1,6 @@
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffer.
-*
-
-*
-**
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffe
+** TODO 123
+DEADLINE: <2018-08-10 Fri 23:00> SCHEDULED: <2018-08-10 Fri 08:00>
+** TODO 456
+SCHEDULED: <2018-08-10 Fri 22:00>
+** TODO 789
+SCHEDULED: <2018-08-10 Fri 23:30>
